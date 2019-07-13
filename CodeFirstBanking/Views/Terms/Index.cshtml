@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CodeFirstBanking.Models.Term>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <b>Term Account(s)</b>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TermId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaturityInYears)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountBalance)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TermId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaturityInYears)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountBalance)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.TermId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

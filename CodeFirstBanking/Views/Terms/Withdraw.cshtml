@@ -1,0 +1,45 @@
+﻿@model CodeFirstBanking.Models.Term
+
+@{
+    ViewData["Title"] = "Withdraw";
+}
+
+<h2>Withdraw</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.LabelFor(model => model.TermId, "Term Id:")
+                @Html.EditorFor(Model => Model.TermId)
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.LabelFor(model => model.MaturityInYears, "Age:")
+                @Html.EditorFor(Model => Model.MaturityInYears , new { htmlAttributes = new { @class = "form-group", @min="5" } })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.LabelFor(Model => Model.AccountBalance, "Withdraw Amount:")
+                @Html.EditorFor(Model => Model.AccountBalance , new { htmlAttributes = new { @class = "form-group", @min="0" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" />
+            </div>
+        </div>
+    </div>
+}
